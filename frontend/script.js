@@ -1,23 +1,33 @@
 async function appendData() {
-    const user = document.getElementById('username').value
+    const tweetsContainer = document.getElementById('tweets-container')
 
-    const url = `http://localhost:3003/${user}/likes`
+    tweetsContainer.innerHTML = ''
+
+    const user = document.getElementById('user').value
+
+    const likedUser = document.getElementById('liked-user').value
+
+    const url = `http://localhost:3003/${user}/likes/${likedUser}`
 
     const tweets = await fetch(url).then(res => res.json())
 
-    const mainContainer = document.getElementById('myData')
+    tweets.map(tweet => {
+        tweet.images.map(image => {
+            let imageWrapper = document.createElement('div')
+            imageWrapper.className = 'image-wrapper'
+            tweetsContainer.appendChild(imageWrapper)
 
-    tweets.map(t => {
-        if (t.images.length > 0) {
-            t.images.map(image => {
-                let div = document.createElement('div')
-                mainContainer.appendChild(div)
+            let img = document.createElement('img')
+            img.src = image
+            imageWrapper.appendChild(img)
 
-                let img = document.createElement('img')
-                img.src = image
-                img.height = 300
-                div.appendChild(img)
-            })
-        }
+            const { username, profileImage, tweetUrl } = tweet
+    
+            let infoSpan = document.createElement('span')
+            infoSpan.className = 'info-span'
+            infoSpan.textContent = username
+            imageWrapper.appendChild(infoSpan)
+        })
+
     })
 }

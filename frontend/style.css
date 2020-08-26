@@ -1,4 +1,84 @@
-#myData {
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+    margin: 0;
+    background: #F7F7F7;
+}
+
+#form-wrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+button {
+    border: none;
+    height: 40px;
+    padding: 10px;
+    background: #B00;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:focus, button:hover {
+    background: #800;
+    outline: none;
+}
+
+form {
+    display: flex;
+    margin: 10px;
+}
+
+form input {
+    height: 20px;
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#heart {
+    color: #B00;
+    font-size: 2em;
+}
+
+#tweets-container {
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+}
+
+.image-wrapper {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.info-span {
+    /* visibility: hidden; */
+    /* todo */
 }

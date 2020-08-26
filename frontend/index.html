@@ -10,12 +10,17 @@
 </head>
 
 <body>
-    <form method="get">
-        <label for="username">User</label><br>
-        <input type="text" name="username" id="username">
-    </form>
-    <button onclick="appendData()">Carregar</button>
-    <div id="myData"> </div>
+    <div id="form-wrapper">
+        <form method="get">
+            <input placeholder="User" type="text" name="user" id="user">
+        </form>
+        <span id="heart">♥</span>
+        <form method="get">
+            <input placeholder="Liked user" type="text" name="liked-user" id="liked-user">
+        </form>
+        <button onclick="appendData()">Go</button>
+    </div>
+    <div id="tweets-container"> </div>
 </body>
 
 </html>
