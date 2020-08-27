@@ -9,17 +9,14 @@ module.exports = app => {
                 tweet.hasOwnProperty('extended_entities')
                 && tweet.extended_entities.hasOwnProperty('media')
             ).map(tweet => {
+                const name = tweet.user.name
                 const username = tweet.user.screen_name
-
                 const profileImage = tweet.user.profile_image_url.replace('_normal.', '.')
-
                 const tweetUrl = `http://twitter.com/${username}/status/${tweet.id_str}`
-
                 const images = []
-
                 tweet.extended_entities.media.map(m => images.push(m.media_url))
 
-                return { username, profileImage, tweetUrl, images }
+                return { name, username, profileImage, tweetUrl, images }
             })))
             .catch(err => res.send(err))
     }
@@ -34,16 +31,13 @@ module.exports = app => {
                 && tweet.user.screen_name.toLowerCase() == likedUser.toLowerCase()
             ).map(tweet => {
                 const username = tweet.user.screen_name
-
+                const name = tweet.user.name
                 const profileImage = tweet.user.profile_image_url.replace('_normal.', '.')
-
                 const tweetUrl = `http://twitter.com/${username}/status/${tweet.id_str}`
-
                 const images = []
-
                 tweet.extended_entities.media.map(m => images.push(m.media_url))
 
-                return { username, profileImage, tweetUrl, images }
+                return { name, username, profileImage, tweetUrl, images }
             })))
             .catch(err => res.send(err))
     }
