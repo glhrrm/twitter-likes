@@ -70,15 +70,32 @@ form input {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #B00;
 }
 
 img {
     width: 200px;
     height: 150px;
     object-fit: cover;
+    position: absolute;
 }
 
-.info-span {
-    /* visibility: hidden; */
-    /* todo */
+img:hover {
+    opacity: 0.1;
+}
+
+img:hover~.tweet-info {
+    visibility: visible;
+}
+
+.tweet-info {
+    visibility: hidden;
+    color: #FFF;
+}
+
+.tweet-info .profile-image {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }

@@ -22,11 +22,29 @@ async function appendData() {
             imageWrapper.appendChild(img)
 
             const { username, profileImage, tweetUrl } = tweet
-    
-            let infoSpan = document.createElement('span')
-            infoSpan.className = 'info-span'
-            infoSpan.textContent = username
-            imageWrapper.appendChild(infoSpan)
+
+            let tweetInfo = document.createElement('div')
+            tweetInfo.className = 'tweet-info'
+            imageWrapper.appendChild(tweetInfo)
+
+            let anotherImageWrapper = document.createElement('div')
+            // anotherImageWrapper.className = 'another-image-wrapper'
+            tweetInfo.appendChild(anotherImageWrapper)
+
+            let tweetProfileImage = document.createElement('img')
+            tweetProfileImage.className = 'profile-image'
+            tweetProfileImage.src = profileImage
+            anotherImageWrapper.appendChild(tweetProfileImage)
+
+            let tweetUsername = document.createElement('span')
+            tweetUsername.className = 'username'
+            tweetUsername.textContent = username
+            tweetInfo.appendChild(tweetUsername)
+
+            // let linkToTweet = document.createElement('a')
+            // linkToTweet.innerHTML = '->'
+            // linkToTweet.href = tweetUrl
+            // tweetInfo.appendChild(linkToTweet)
         })
 
     })
