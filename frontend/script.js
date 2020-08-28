@@ -1,14 +1,23 @@
 async function appendData() {
-    const user = document.getElementById('user').value
-    const likedUser = document.getElementById('liked-user').value
-    
-    if (user == '') alert('User must be informed')
-
     const tweetsContainer = document.getElementById('tweets-container')
     tweetsContainer.innerHTML = ''
 
-    const url = `http://localhost:3003/${user}/likes/${likedUser}`
-    const tweets = await fetch(url).then(res => res.json())
+    const loader = document.createElement('div')
+    loader.className = 'loader'
+    tweetsContainer.appendChild(loader)
+
+    const user = document.getElementById('user').value
+    const likedUser = document.getElementById('liked-user').value
+    const count = document.getElementById('count-input').value
+
+    if (!user) return tweetsContainer.innerHTML = 'User must be informed'
+
+    const url = `http://localhost:3003/${user}/likes/${likedUser}?count=${count}`
+    const tweets = await fetch(url).then(res => res.json()).catch(err => res.send(err))
+
+    loader.style.display = 'none'
+
+    if (!tweets.length) return tweetsContainer.innerHTML = 'No tweets found'
 
     tweets.map(tweet => {
         tweet.images.map(image => {
@@ -17,8 +26,9 @@ async function appendData() {
             let linkToTweet = document.createElement('a')
             linkToTweet.href = tweetUrl
             linkToTweet.setAttribute('target', '_blank')
+            linkToTweet.setAttribute.className = 'link-to-tweet'
             tweetsContainer.appendChild(linkToTweet)
-            
+
             let imageWrapper = document.createElement('div')
             imageWrapper.className = 'image-wrapper'
             linkToTweet.appendChild(imageWrapper)
@@ -51,11 +61,10 @@ async function appendData() {
 
             let divUsername = document.createElement('div')
             divName.className = 'div-username'
-            divUsername.innerHTML = '@' + username
+            divUsername.innerHTML = `@${username}`
             tweetUserInfo.appendChild(divUsername)
 
             tweetInfo.appendChild(tweetUserInfo)
         })
-
     })
 }

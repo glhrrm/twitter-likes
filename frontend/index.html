@@ -11,14 +11,11 @@
 
 <body>
     <div id="form-wrapper">
-        <form method="get">
-            <input placeholder="User" type="text" name="user" id="user">
-        </form>
+        <input class="user-input" placeholder="User" type="text" name="user" id="user">
         <span id="heart">♥</span>
-        <form method="get">
-            <input placeholder="Liked user" type="text" name="liked-user" id="liked-user">
-        </form>
-        <button onclick="appendData()">Go</button>
+        <input class="user-input" placeholder="Liked user" type="text" name="liked-user" id="liked-user">
+        <input type="number" name="count" id="count-input" min="1" max="200" value="20">
+        <button id="search-button" onclick="appendData()">Go</button>
     </div>
     <div id="tweets-container"> </div>
 </body>

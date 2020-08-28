@@ -3,8 +3,9 @@ const { apiCall } = require('../config/api')
 module.exports = app => {
     const find = (req, res) => {
         const user = req.params.user
+        const count = req.query.count
 
-        apiCall(user, 20)
+        apiCall(user, count)
             .then(data => res.send(data.filter(tweet =>
                 tweet.hasOwnProperty('extended_entities')
                 && tweet.extended_entities.hasOwnProperty('media')
@@ -23,8 +24,9 @@ module.exports = app => {
 
     const findByUser = (req, res) => {
         const { user, likedUser } = req.params
+        const count = req.query.count
 
-        apiCall(user, 20)
+        apiCall(user, count)
             .then(data => res.send(data.filter(tweet =>
                 tweet.hasOwnProperty('extended_entities')
                 && tweet.extended_entities.hasOwnProperty('media')
